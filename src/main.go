@@ -25,6 +25,16 @@ func (p *Plugin) ExecuteCommand(c *plugin.Context, args *model.CommandArgs) (*mo
 			ResponseType: model.COMMAND_RESPONSE_TYPE_EPHEMERAL,
 			Text:         "Channel id: " + args.ChannelId,
 		}, nil
+	case "user_id":
+		return &model.CommandResponse{
+			ResponseType: model.COMMAND_RESPONSE_TYPE_EPHEMERAL,
+			Text:         "User id: " + args.UserId,
+		}, nil
+	case "team_id":
+		return &model.CommandResponse{
+			ResponseType: model.COMMAND_RESPONSE_TYPE_EPHEMERAL,
+			Text:         "Team id: " + args.TeamId,
+		}, nil
 	case "delete_posts":
 		if !p.API.HasPermissionToChannel(args.UserId, args.ChannelId, model.PERMISSION_DELETE_OTHERS_POSTS) {
 			return &model.CommandResponse{
@@ -127,6 +137,20 @@ func (p *Plugin) OnActivate() error {
 		Trigger:          "channel_id",
 		AutoComplete:     true,
 		AutoCompleteDesc: "Displays channel id",
+	}); err != nil {
+		return err
+	}
+	if err := p.API.RegisterCommand(&model.Command{
+		Trigger:          "user_id",
+		AutoComplete:     true,
+		AutoCompleteDesc: "Displays user id",
+	}); err != nil {
+		return err
+	}
+	if err := p.API.RegisterCommand(&model.Command{
+		Trigger:          "team_id",
+		AutoComplete:     true,
+		AutoCompleteDesc: "Displays team id",
 	}); err != nil {
 		return err
 	}

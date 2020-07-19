@@ -13,7 +13,7 @@ const manifestStr = `
   "id": "srcf.redact",
   "name": "Message Redaction Plugin",
   "description": "This plugin allows team administrators to delete old messages",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "min_server_version": "5.6.0",
   "server": {
     "executables": {

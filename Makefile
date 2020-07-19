@@ -1,5 +1,5 @@
 PLUGIN_ID=srcf.redact
-PLUGIN_VERSION=1.0.0
+PLUGIN_VERSION=1.1.0
 
 CWD := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
